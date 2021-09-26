@@ -1,5 +1,5 @@
 # Code 9.15.21
-from math import sqrt
+from math import sqrt, erf
 from numpy import linspace, cos, sin, pi
 import matplotlib.pyplot as plt
 
@@ -16,13 +16,15 @@ N = 100
 wn = sqrt(k/m)
 
 t = linspace(0,T,N)
+
 y = (y0-m*g/k)*cos(wn*t) + v0/wn*sin(wn*t) + m*g/k
 
-plt.plot(t,y, '-r')
+plt.plot(t,erf(t*4), '-r', label = "test")
 plt.xlabel("Time [sec]")
 plt.ylabel("Y [m]")
 plt.grid("on")
 
+plt.legend()
 plt.xlim(0,T)
 
 plt.show()
