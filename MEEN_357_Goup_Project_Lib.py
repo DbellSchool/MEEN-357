@@ -34,3 +34,13 @@ def tau_dcmotor(v,MoterSpec_dic):
 
     return tourqe
 
+
+def F_gravity(terrain_angle, rover, planet):
+    import numpy as np
+    terrain_angle = np.array([])
+    # need the mass of the entire rover
+    m = get_mass(rover)
+    mass = rover
+    rover("mass") 
+
+    return
