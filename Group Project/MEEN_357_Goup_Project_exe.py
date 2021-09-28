@@ -31,3 +31,15 @@ wheel_assembly = {"wheel": wheel, "speed_reducer": speed_reducer, "motor": motor
 rover = {"wheel_assembly": wheel_assembly,"chassis":chassis, "science_payload":science_payload,"power_subsys":power_subsys }
 
 print(get_mass (rover))
+
+def tau_dcmotor(w,Motor):
+    #Returns the motor shaft torque when given motor shaft speed and a dictionary containing important specifications for the motor. 
+    Ts = Motor["torque_stall"]
+    TN = Motor["torque_noload"]
+    wN = Motor["speed_noload"]
+    T = Ts - (Ts-TN)/wN # equaiton on sheet five
+    w =1
+
+    return T
+
+x =tau_dcmotor(30,motor)

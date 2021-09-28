@@ -26,13 +26,16 @@ def get_gear_ratio(dic):
 
     return Ng
 
-def tau_dcmotor(v,MoterSpec_dic):
+def tau_dcmotor(w,Motor):
     #Returns the motor shaft torque when given motor shaft speed and a dictionary containing important specifications for the motor. 
+    Ts = Motor["torque_stall"]
+    TN = Motor["torque_noload"]
+    wN = Motor["speed_noload"]
+    T = Ts - (Ts-TN)/wN # equaiton on sheet five
 
-  
-    tourqe =0
+    P = T*w # power 
 
-    return tourqe
+    return T
 
 
 def F_gravity(terrain_angle, rover, planet):
