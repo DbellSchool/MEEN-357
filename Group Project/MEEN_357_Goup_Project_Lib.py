@@ -24,7 +24,7 @@ def get_gear_ratio(dic):
 
     return Ng
 
-def tau_dcmotor(w,Motor):
+def tau_dcmotor(w,Motor = {"torque_stall": 170, "torque_noload": 0, "speed_noload": 3.80, "mass": 5.0} ):
     #Returns the motor shaft torque when given motor shaft speed and a dictionary containing important specifications for the motor. 
 
     t =[]

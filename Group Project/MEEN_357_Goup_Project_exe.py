@@ -33,7 +33,7 @@ rover = {"wheel_assembly": wheel_assembly,"chassis":chassis, "science_payload":s
 m= get_mass (rover)
 
 w = [4,5,6]
-t = tau_dcmotor(w, motor)
+t = tau_dcmotor(w)
 print(t)
 
 
