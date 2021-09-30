@@ -235,3 +235,5 @@ def A2_task6():
     return
 
 print("working")
+
+A2_task2()

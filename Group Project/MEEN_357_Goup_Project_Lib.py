@@ -7,11 +7,12 @@ def get_mass(rov):
     #print(rov)
     wheels = rov['wheel_assembly']['wheel']['mass']*6
     sRed = rov['wheel_assembly']['speed_reducer']['mass']*6
+    WheelMotor = rov['wheel_assembly']['motor']['mass']*6
     chassis = rov['chassis']['mass']
     science_pay = rov['science_payload']['mass']
     power_sub = rov['power_subsys']['mass']
 
-    rov_mass = wheels+ sRed+chassis+science_pay+power_sub
+    rov_mass = wheels+ sRed+chassis+science_pay+power_sub+WheelMotor
 
     return rov_mass
 
@@ -21,21 +22,23 @@ def get_gear_ratio(dic):
     d2 = dic["diam_gear"]
     Ng = (d2/d1)**2
 
-    #Ng = Ng *1
-
-
     return Ng
 
 def tau_dcmotor(w,Motor):
     #Returns the motor shaft torque when given motor shaft speed and a dictionary containing important specifications for the motor. 
-    Ts = Motor["torque_stall"]
-    TN = Motor["torque_noload"]
-    wN = Motor["speed_noload"]
-    T = Ts - (Ts-TN)/wN # equaiton on sheet five
 
-    P = T*w # power 
+    t =[]
+    for i in w:
+        Ts = Motor["torque_stall"]
+        TN = Motor["torque_noload"]
+        wN = Motor["speed_noload"]
+        T = Ts - ((Ts-TN)/wN)*i # equaiton on sheet five
+        t.append(T)
+    
 
-    return T
+    #P = T*w # power 
+
+    return t
 
 
 def F_gravity(terrain_angle, rover, planet):
